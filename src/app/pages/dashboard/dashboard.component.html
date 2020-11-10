@@ -1,0 +1,55 @@
+
+<div class="container-fluid mainbody">
+<div class="row" style="margin-top:10px"><br>
+<h5 class="txt-align">Weather Report</h5>
+<div class="col-sm-9">
+</div>
+<div class="col-sm-2">
+<input type="text" id="search" [(ngModel)]="CityName" placeholder="Search City" class="form-control">
+</div>
+<div class="col-sm-1">
+<button id="btnView" type="button" (click)="GetData()" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-search"></span> 
+        </button>
+</div>
+</div>
+
+
+<div class="row">
+   <div class="col-lg-12">
+   <div class="table-responsive" style="background-color: white; margin-top:2%;padding: 10px;">          
+      <table class="table table-bordered" style="margin-top: 2%;">
+        <thead>
+          <tr class="trheads">
+            <th>#</th>
+            <th>Weather</th>
+            <th>Temperature Max</th>
+            <th>Temperature Min</th>
+            <th>Descriptions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of WeatherData; let i = index;">
+            <td>{{i + 1}}</td>
+            <td>{{data.weather[0].main}} <img *ngIf="data.weather[0].main == 'Clear'" src="assets/image/cloud.png" width="40px" height="40px">
+               <img *ngIf="data.weather[0].main == 'Clouds'" src="assets/image/rainy.png" width="40px" height="40px">
+            </td>
+            <td>{{data.main.temp_max}}</td>
+            <td>{{data.main.temp_min}}</td>
+            <td>{{data.weather[0].description}}</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+</div>
+<div class="row" style="margin-top:10px">
+   <div class="col-lg-12">
+   <highcharts-chart
+      [Highcharts] = "highcharts3" 
+      [options] = "chartOptions3" 
+      style = "height: 400px; display: block;">
+   </highcharts-chart>
+   </div>
+   </div>
+</div>

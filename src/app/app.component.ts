@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import * as Highcharts from 'highcharts';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'weatherreport';
+
 }
